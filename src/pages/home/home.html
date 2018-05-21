@@ -1,14 +1,28 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Todo
     </ion-title>
+    <ion-buttons end>
+      <button ion-button *ngIf="!reorderIsEnabled" (click)="toggleReorder()">Eidt</button>
+      <button ion-button *ngIf="reorderIsEnabled" (click)="toggleReorder()">Done</button>
+      <button ion-button (click)="openTodoAlert()">
+          <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-list [reorder]="reorderIsEnabled">
+    <ion-item-sliding *ngFor="let todo of todos">
+        <ion-item>{{todo}}</ion-item>
+        <ion-item-options slide="right">
+          <button ion-button color="danger">
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
+
