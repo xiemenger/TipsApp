@@ -45,5 +45,9 @@ export class HomePage {
   toggleReorder(){
     this.reorderIsEnabled = !this.reorderIsEnabled;
   }
+
+  itemReordered($event){
+    
+  }
 }
 
